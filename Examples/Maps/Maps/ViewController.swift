@@ -220,9 +220,7 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<Text>", for: indexPath)
-        if let cell = cell as? HostingCell<Text> {
-          cell.set(rootView: Text("Hello"), parentController: self)
-        }
+        (cell as? HostingCell<Text>)?.set(rootView: Text("Hello"), parentController: self)
         return cell
     }
 
