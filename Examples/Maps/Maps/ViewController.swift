@@ -220,7 +220,10 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
 
     struct ContentView: View {
         var body: some View {
-            Text("Hello").edgesIgnoringSafeArea(.all)
+            Text("Hello")
+                .lineLimit(1)
+                .fixedSize(horizontal: false, vertical: true)
+                .edgesIgnoringSafeArea(.all)
         }
     }
 
