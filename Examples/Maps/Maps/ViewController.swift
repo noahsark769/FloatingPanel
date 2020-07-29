@@ -3,8 +3,45 @@
 //
 
 import UIKit
+import SwiftUI
 import MapKit
 import FloatingPanel
+
+final class HostingCell<Content: View>: UITableViewCell {
+    private let hostingController = UIHostingController<Content?>(rootView: nil)
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        hostingController.view.backgroundColor = .clear
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func set(rootView: Content, parentController: UIViewController) {
+        self.hostingController.rootView = rootView
+        self.hostingController.view.invalidateIntrinsicContentSize()
+
+        let requiresControllerMove = hostingController.parent != parentController
+        if requiresControllerMove {
+            parentController.addChild(hostingController)
+        }
+
+        if !self.contentView.subviews.contains(hostingController.view) {
+            self.contentView.addSubview(hostingController.view)
+            hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+            hostingController.view.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+            hostingController.view.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+            hostingController.view.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+            hostingController.view.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        }
+
+        if requiresControllerMove {
+            hostingController.didMove(toParent: parentController)
+        }
+    }
+}
 
 class ViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate, FloatingPanelControllerDelegate {
     var fpc: FloatingPanelController!
@@ -150,7 +187,7 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         searchBar.placeholder = "Search for a place or address"
         searchBar.setSearchText(fontSize: 15.0)
-
+        tableView.register(HostingCell<Text>.self, forCellReuseIdentifier: "HostingCell<Text>")
         hideHeader()
     }
 
@@ -182,18 +219,9 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let cell = cell as? SearchCell {
-            switch indexPath.row {
-            case 0:
-                cell.iconImageView.image = UIImage(named: "mark")
-                cell.titleLabel.text = "Marked Location"
-                cell.subTitleLabel.text = "Golden Gate Bridge, San Francisco"
-            default:
-                cell.iconImageView.image = UIImage(named: "like")
-                cell.titleLabel.text = "Favorites"
-                cell.subTitleLabel.text = "0 Places"
-            }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<Text>", for: indexPath)
+        if let cell = cell as? HostingCell<Text> {
+          cell.set(rootView: Text("Hello"), parentController: self)
         }
         return cell
     }
