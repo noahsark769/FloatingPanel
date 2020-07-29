@@ -187,7 +187,7 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         searchBar.placeholder = "Search for a place or address"
         searchBar.setSearchText(fontSize: 15.0)
-        tableView.register(HostingCell<Text>.self, forCellReuseIdentifier: "HostingCell<Text>")
+        tableView.register(HostingCell<ContentView>.self, forCellReuseIdentifier: "HostingCell<ContentView>")
         hideHeader()
     }
 
@@ -218,9 +218,15 @@ class SearchPanelViewController: UIViewController, UITableViewDataSource, UITabl
         return 100
     }
 
+    struct ContentView: View {
+        var body: some View {
+            Text("Hello").edgesIgnoringSafeArea(.all)
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<Text>", for: indexPath)
-        (cell as? HostingCell<Text>)?.set(rootView: Text("Hello"), parentController: self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HostingCell<ContentView>", for: indexPath)
+        (cell as? HostingCell<ContentView>)?.set(rootView: ContentView(), parentController: self)
         return cell
     }
 

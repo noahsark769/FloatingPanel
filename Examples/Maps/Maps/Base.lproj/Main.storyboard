@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,6 +28,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="5Jw-n2-Cpw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="1Fg-Be-qfh"/>
@@ -41,7 +40,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="d9i-3g-8Ja" secondAttribute="bottom" id="Y1G-hr-aEX"/>
                             <constraint firstItem="d9i-3g-8Ja" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="diB-Ij-HN3"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="5Jw-n2-Cpw" id="WVC-rU-mLe"/>
@@ -69,7 +67,7 @@
                                             <rect key="frame" x="0.0" y="6" width="375" height="56"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-re-InH">
+                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7r-re-InH">
                                             <rect key="frame" x="0.0" y="66" width="375" height="748"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <view key="tableHeaderView" contentMode="scaleToFill" id="u28-LY-hIh" customClass="SearchHeaderView" customModule="Maps" customModuleProvider="target">
@@ -173,7 +171,7 @@
                                                     <rect key="frame" x="0.0" y="144" width="375" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LzC-B9-Adb" id="evr-60-laS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="GEk-yE-lLq">
@@ -185,7 +183,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Gfl-Oy-rsy">
-                                                                <rect key="frame" x="57" y="11.999999999999996" width="303" height="45.666666666666657"/>
+                                                                <rect key="frame" x="57" y="12" width="303" height="46"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spf-8L-Ne6">
                                                                         <rect key="frame" x="0.0" y="0.0" width="303" height="22"/>
@@ -194,7 +192,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Places" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyo-3V-7U8">
-                                                                        <rect key="frame" x="0.0" y="24" width="303" height="21.666666666666671"/>
+                                                                        <rect key="frame" x="0.0" y="24" width="303" height="22"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <color key="textColor" red="0.57647058819999997" green="0.57647058819999997" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
@@ -235,6 +233,7 @@
                                 <blurEffect style="extraLight"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="G74-X7-Za8"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ye3-uU-bq3" firstAttribute="leading" secondItem="G74-X7-Za8" secondAttribute="leading" id="Kr2-sU-ZWZ"/>
@@ -242,7 +241,6 @@
                             <constraint firstItem="Ye3-uU-bq3" firstAttribute="trailing" secondItem="G74-X7-Za8" secondAttribute="trailing" id="fEL-8y-Acc"/>
                             <constraint firstItem="Ye3-uU-bq3" firstAttribute="top" secondItem="Ncl-E9-yRn" secondAttribute="top" id="w77-ba-FrJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="G74-X7-Za8"/>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Zcj-SE-gb8" id="BH7-Gy-RG5"/>
